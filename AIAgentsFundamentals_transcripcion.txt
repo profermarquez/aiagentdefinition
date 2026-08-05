@@ -1,0 +1,20 @@
+Alright, so let's first define agents. Okay, so believe it or not, one of the most difficult things from this entire deep dive into AI
+agents for me was just the actual definition of an AI agent. Probably because it's just such a new field and people are still trying
+to figure out what even it is and like how it works. So before watching this video, if you were also confused,
+I promise you it is not you. Let me walk you through this. The easiest way to first define AI agents is the given example of what
+is not an AI agent. What is definitely not an AI agent is if you just ask an AI to do something for you, otherwise known as one shot
+prompting. Anyways, okay, so what is definitely not an AI agent is if you're just asking AI to do something directly. For example,
+if you just go to ChatGBT and write, please write out an essay on topic X from start to finish in one go, you'll still get a response and
+it'll still be like coherent and on topic, but are probably also be quite vague and probably not what you're looking for. On the other hand,
+if you use an agentic workflow, that will significantly improve your results. And what that would look like is to break down that overarching
+task into different steps. Like first, maybe writing an outline for the topic, consider if you maybe need to do some web research, then you might
+write your first draft, consider what part of that draft may need more revision or more research, revise your draft before ultimately coming up
+with the essay. A non agentic workflow is just from start to finish and you're done. While an agentic workflow is more a circular iterative
+process, you think and you do research, come up with an output and then you revise that and then you think you do some more research, come
+up with an output and you keep doing that until you get to your final result. Non agentic workflow, straight up and down, agentic
+workflow, circular. Okay, so now let's add in a little bit of complexity. You got your non agentic workflow, then you got your agentic
+workflow, then you have a third level, which is a truly autonomous AI agent. This is when an AI can completely independently figure out the exact
+steps, which tools to use, go through that circular process of revising things by itself to finally come up with an output. This is the level that we
+want our AI agents to become. But currently, as of the time of this filming at least, we're not quite there yet. We're still focusing on this second
+level of agentic workflows, where there's certain agentic components to it, but it's not fully autonomous yet. But honestly, with speed that AI is
+developing, who knows, maybe in like two months, that's gonna happen.

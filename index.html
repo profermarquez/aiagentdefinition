@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI Agents Fundamentals</title>
+
+    <style>
+        :root {
+            --fondo: #f4f5f7;
+            --tarjeta: #ffffff;
+            --texto: #202124;
+            --secundario: #667085;
+            --principal: #405cf5;
+            --principal-suave: #eef1ff;
+            --borde: #e4e7ec;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--fondo);
+            color: var(--texto);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .contenedor {
+            width: min(950px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 38px 0 80px;
+        }
+
+        header {
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            margin: 0 0 10px;
+            font-size: clamp(28px, 5vw, 42px);
+        }
+
+        .descripcion {
+            margin: 0;
+            color: var(--secundario);
+            line-height: 1.5;
+        }
+
+        .reproductor {
+            position: sticky;
+            top: 10px;
+            z-index: 20;
+            padding: 18px;
+            margin-bottom: 24px;
+            border: 1px solid var(--borde);
+            border-radius: 16px;
+            background: var(--tarjeta);
+            box-shadow: 0 8px 25px rgba(16, 24, 40, 0.1);
+        }
+
+        audio {
+            width: 100%;
+        }
+
+        .estado {
+            margin-top: 10px;
+            color: var(--secundario);
+            font-size: 14px;
+        }
+
+        .transcripcion {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .segmento {
+            display: grid;
+            grid-template-columns: 75px 1fr;
+            gap: 16px;
+            padding: 17px;
+            border: 1px solid var(--borde);
+            border-radius: 12px;
+            background: var(--tarjeta);
+            cursor: pointer;
+            transition:
+                border-color 0.2s,
+                background-color 0.2s,
+                transform 0.2s;
+        }
+
+        .segmento:hover {
+            border-color: var(--principal);
+            transform: translateY(-1px);
+        }
+
+        .segmento.activo {
+            border-color: var(--principal);
+            background: var(--principal-suave);
+        }
+
+        .tiempo {
+            color: var(--principal);
+            font-family: Consolas, monospace;
+            font-weight: bold;
+        }
+
+        .texto {
+            margin: 0;
+            font-size: 17px;
+            line-height: 1.65;
+        }
+
+        @media (max-width: 600px) {
+            .contenedor {
+                width: min(100% - 20px, 950px);
+                padding-top: 20px;
+            }
+
+            .segmento {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .texto {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="contenedor">
+        <header>
+            <h1>AI Agents Fundamentals</h1>
+
+            <p class="descripcion">
+                Seleccioná cualquier fragmento para reproducir el audio
+                desde ese punto.
+            </p>
+        </header>
+
+        <section class="reproductor">
+            <audio
+                id="audio"
+                src="AIAgentsFundamentals2.mp3"
+                controls
+                preload="metadata"
+            ></audio>
+
+            <div class="estado" id="estado">
+                20 fragmentos · idioma detectado:
+                en
+            </div>
+        </section>
+
+        <section
+            id="transcripcion"
+            class="transcripcion"
+        ></section>
+    </main>
+
+    <script>
+        const segmentos = [{"id": 1, "inicio": 0.08, "fin": 7.42, "marca": "00:00", "texto": "Alright, so let's first define agents. Okay, so believe it or not, one of the most difficult things from this entire deep dive into AI"}, {"id": 2, "inicio": 7.42, "fin": 13.82, "marca": "00:07", "texto": "agents for me was just the actual definition of an AI agent. Probably because it's just such a new field and people are still trying"}, {"id": 3, "inicio": 13.82, "fin": 19.22, "marca": "00:13", "texto": "to figure out what even it is and like how it works. So before watching this video, if you were also confused,"}, {"id": 4, "inicio": 19.34, "fin": 26.2, "marca": "00:19", "texto": "I promise you it is not you. Let me walk you through this. The easiest way to first define AI agents is the given example of what"}, {"id": 5, "inicio": 26.2, "fin": 34.06, "marca": "00:26", "texto": "is not an AI agent. What is definitely not an AI agent is if you just ask an AI to do something for you, otherwise known as one-shot"}, {"id": 6, "inicio": 34.06, "fin": 41.24, "marca": "00:34", "texto": "prompting. Anyways, okay, so what is definitely not an AI agent is if you're just asking AI to do something directly. For example, if"}, {"id": 7, "inicio": 41.24, "fin": 47.48, "marca": "00:41", "texto": "you just go to ChatGBT and write, please write out an essay on topic X from start to finish in one go, you'll still get a response and"}, {"id": 8, "inicio": 47.48, "fin": 54.76, "marca": "00:47", "texto": "it'll still be like coherent and on topic, but are probably also be quite vague and probably not what you're looking for. On the other"}, {"id": 9, "inicio": 54.76, "fin": 61.68, "marca": "00:54", "texto": "hand, if you use an agentic workflow that will significantly improve your results. And what that would look like is to break down that overarching"}, {"id": 10, "inicio": 61.68, "fin": 68.78, "marca": "01:01", "texto": "task into different steps. Like first, maybe writing an outline for the topic, consider if you maybe need to do some web research, then you"}, {"id": 11, "inicio": 68.78, "fin": 74.82, "marca": "01:08", "texto": "might write your first draft, consider what part of that draft may need more revision or more research, revise your draft before"}, {"id": 12, "inicio": 74.82, "fin": 83.14, "marca": "01:14", "texto": "ultimately coming up with the essay. A non agentic workflow is just from start to finish and you're done. While an agentic workflow is more a"}, {"id": 13, "inicio": 83.56, "fin": 89.86, "marca": "01:23", "texto": "circular iterative process, you think and you do research, come up with an output and then you revise that and then you think you do some more"}, {"id": 14, "inicio": 89.86, "fin": 95.82, "marca": "01:29", "texto": "research, come up with an output and you keep doing that until you get to your final result. Non agentic workflow, straight up and down,"}, {"id": 15, "inicio": 96.04, "fin": 102.78, "marca": "01:36", "texto": "agentic workflow, circular. Okay, so now let's add in a little bit of complexity. You got your non agentic workflow, then you got your"}, {"id": 16, "inicio": 102.78, "fin": 110.4, "marca": "01:42", "texto": "agentic workflow, then you have a third level, which is a truly autonomous AI agent. This is when an AI can completely independently"}, {"id": 17, "inicio": 110.4, "fin": 117.4, "marca": "01:50", "texto": "figure out the exact steps, which tools to use, go through that circular process of revising things by itself to finally come up with an"}, {"id": 18, "inicio": 117.4, "fin": 124.72, "marca": "01:57", "texto": "output. This is the level that we want our AI agents to become. But currently, as of the time of this filming at least, we're not quite"}, {"id": 19, "inicio": 124.72, "fin": 132.74, "marca": "02:04", "texto": "there yet. We're still focusing on this second level of agentic workflows, where there's certain agentic components to it, but it's not fully"}, {"id": 20, "inicio": 132.74, "fin": 137.6, "marca": "02:12", "texto": "autonomous yet. But honestly, with speed that AI is developing, who knows, maybe in like two months, that's gonna happen."}];
+
+        const audio = document.getElementById("audio");
+        const contenedor = document.getElementById("transcripcion");
+
+        let indiceActivo = -1;
+
+        function escaparHtml(texto) {
+            const elemento = document.createElement("div");
+            elemento.textContent = texto;
+            return elemento.innerHTML;
+        }
+
+        function mostrarTranscripcion() {
+            segmentos.forEach((segmento, indice) => {
+                const articulo = document.createElement("article");
+
+                articulo.className = "segmento";
+                articulo.dataset.indice = indice;
+
+                articulo.innerHTML = `
+                    <span class="tiempo">
+                        ${segmento.marca}
+                    </span>
+
+                    <p class="texto">
+                        ${escaparHtml(segmento.texto)}
+                    </p>
+                `;
+
+                articulo.addEventListener("click", () => {
+                    audio.currentTime = segmento.inicio;
+                    audio.play();
+                });
+
+                contenedor.appendChild(articulo);
+            });
+        }
+
+        function actualizarFragmento() {
+            const tiempo = audio.currentTime;
+
+            const nuevoIndice = segmentos.findIndex((segmento) => {
+                return (
+                    tiempo >= segmento.inicio &&
+                    tiempo < segmento.fin
+                );
+            });
+
+            if (
+                nuevoIndice === -1 ||
+                nuevoIndice === indiceActivo
+            ) {
+                return;
+            }
+
+            const anterior = document.querySelector(
+                ".segmento.activo"
+            );
+
+            if (anterior) {
+                anterior.classList.remove("activo");
+            }
+
+            const actual = document.querySelector(
+                `.segmento[data-indice="${nuevoIndice}"]`
+            );
+
+            if (actual) {
+                actual.classList.add("activo");
+
+                actual.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+            }
+
+            indiceActivo = nuevoIndice;
+        }
+
+        mostrarTranscripcion();
+
+        audio.addEventListener(
+            "timeupdate",
+            actualizarFragmento
+        );
+    </script>
+</body>
+</html>
