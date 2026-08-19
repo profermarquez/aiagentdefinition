@@ -1,0 +1,90 @@
+So first, what is an LLM? Is it different from AI? And how is ChatGPT related to all of this?
+LLMs stand for Large Language Models, which is a type of neural network that's trained on
+massive amounts of text data. It's generally trained on data that can be found online.
+Everything from web scraping to books to transcripts, anything that is text-based
+can be trained into a large language model. And taking a step back, what is a neural network?
+A neural network is essentially a series of algorithms that try to recognize patterns
+in data. And really what they're trying to do is simulate how the human brain works.
+And LLMs are a specific type of neural network that focus on understanding natural language.
+And as mentioned, LLMs learn by reading tons of books, articles, internet text,
+and there's really no limitation there. And so how do LLMs differ from traditional programming?
+Well, with traditional programming, it's instruction-based, which means if X,
+then Y. You're explicitly telling the computer what to do. You're giving it a set of instructions
+to execute. But with LLMs, it's a completely different story. You're teaching the computer
+not how to do things, but how to learn how to do things. And this is a much more flexible approach
+and is really good for a lot of different applications where previously, traditional
+coding could not accomplish them. So one example application is image recognition.
+With image recognition, traditional programming would require you to hard code every single rule
+for how to, let's say, identify different letters. So A, B, C, D. But if you're handwriting these
+letters, everybody's handwritten letters look different. So how do you use traditional
+programming to identify every single possible variation? Well, that's where this AI approach
+comes in. Instead of giving a computer explicit instructions for how to identify a handwritten
+letter, you instead give it a bunch of examples of what handwritten letters look like. And then
+it can infer what a new handwritten letter looks like based on all of the examples that it has.
+What also sets machine learning and large language models apart in this new approach to programming
+is that they are much more flexible, much more adaptable, meaning they can learn from their
+mistakes and inaccuracies and are thus so much more scalable than traditional programming.
+LLMs are incredibly powerful at a wide range of tasks, including summarization, text generation,
+creative writing, question and answer, programming. And if you've watched any of my videos,
+you know how powerful these large language models can be. And they're only getting better.
+Know that right now, large language models and AI in general are the worst they'll ever be. And as
+we're generating more data on the internet, and as we use synthetic data, which means data created
+by other large language models, these models are going to get better rapidly. And it's super
+exciting to think about what the future holds. Now let's talk a little bit about the history and
+evolution of large language models. We're going to cover just a few of the large language models
+today in this section. The history of LLMs traces all the way back to the ELISA model,
+which was from 1966, which was really the first language model. It had pre-programmed answers
+based on keywords, it had a very limited understanding of the English language,
+and like many early language models, you started to see holes in its logic after a few back and
+forths in a conversation. And then after that, language models really didn't evolve for a very
+long time. Although technically the first recurrent neural network was created in 1924, or RNN,
+they weren't really able to learn until 1972. And these new learning language models are a
+series of neural networks with layers and weights and a whole bunch of stuff that I'm not going to
+get into in this video. And RNNs were really the first technology that was able to predict
+the next word in a sentence, rather than having everything pre-programmed for it. And that was
+really the basis for how current large language models work. And even after this and the advent
+of deep learning in the early 2000s, the field of AI evolved very slowly with language models
+far behind what we see today. This all changed in 2017, where the Google DeepMind team released
+a research paper about a new technology called Transformers. And this paper was called Attention
+is All You Need. And a quick side note, I don't think Google even knew quite what they had published
+at that time. But that same paper is what led OpenAI to develop ChatGPT. So obviously,
+other computer scientists saw the potential for the Transformers architecture. With this new
+Transformers architecture, it was far more advanced. It required decreased training time,
+and it had many other features like self-attention, which I'll cover later in this video.
+Transformers allowed for pre-trained large language models like GPT-1, which was developed by OpenAI
+in 2018. It had 117 million parameters, and it was completely revolutionary but soon to be
+outclassed by other LLMs. Then after that, BERT was released, B-E-R-T, in 2018. That had 340 million
+parameters and had bidirectionality, which means it had the ability to process text in both directions,
+which helped it have a better understanding of context. And as comparison, a unidirectional
+model only has an understanding of the words that came before the target text. And after this,
+LLMs didn't develop a lot of new technology, but they did increase greatly in scale. GPT-2 was
+released in early 2019 and had 2.5 billion parameters. Then GPT-3 in June of 2020 with
+175 billion parameters. And it was at this point that the public started noticing large language
+models. GPT had a much better understanding of natural language than any of its predecessors.
+And this is the type of model that powers ChatGPT, which is probably the model that you're most
+familiar with. And ChatGPT became so popular because it was so much more accurate than anything
+anyone had ever seen before. And it was really because of its size. And because it was now built
+into this chatbot format, anybody could jump in and really understand how to interact with this
+model. ChatGPT 3.5 came out in December of 2022 and started this current wave of AI that we see
+today. Then in March 2023, GPT-4 was released and it was incredible and still is incredible to this
+day. It had a whopping reported 1.76 trillion parameters and uses likely a mixture of experts
+approach, which means it has multiple models that are all fine tuned for specific use cases. And
+then when somebody asks a question to it, it chooses which of those models to use. And then
+they added multimodality and a bunch of other features. And that brings us to where we are
+today. All right, now let's talk about how LLMs actually work in a little bit more detail. The
+process of how large language models work can be split into three steps. The first of these steps
+is called tokenization. And there are neural networks that are trained to split long text
+into individual tokens. And a token is essentially about three fourths of a word. So if it's a shorter
+word like high or that or there, it's probably just one token. But if you have a longer word
+like summarization, it's going to be split into multiple pieces. And the way that tokenization
+happens is actually different for every model. Some of them separate prefixes and suffixes.
+Let's look at an example. What is the tallest building? So what is the tall-est building are
+all separate tokens. And so that separates the suffix off of tallest, but not building,
+because it is taking the context into account. And this step is done so models can understand
+each word individually, just like humans. We understand each word individually and as groupings
+of words. And then the second step of LLMs is something called embeddings. The large language
+models turns those tokens into embedding vectors, turning those tokens into essentially a bunch of
+numerical representations of those tokens, numbers. And this makes it significantly easier for the
+computer to read and understand each word and how the different words relate to each other.
+And these numbers all correspond with the position in an embeddings vector database. And then the
+final step in the process is transformers, which we'll get to in a little bit.

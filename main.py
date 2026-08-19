@@ -1,8 +1,8 @@
 from pathlib import Path
 from faster_whisper import WhisperModel
 
-ARCHIVO_AUDIO = Path("AIAgentsFundamentals2.mp3")
-ARCHIVO_SALIDA = Path("AIAgentsFundamentals_transcripcion.txt")
+ARCHIVO_AUDIO = Path("AIAgentsFundamentals3.mp3")
+ARCHIVO_SALIDA = Path("AIAgentsFundamentals_transcripcion2.txt")
 
 if not ARCHIVO_AUDIO.exists():
     raise FileNotFoundError(f"No se encontró el archivo: {ARCHIVO_AUDIO.resolve()}")

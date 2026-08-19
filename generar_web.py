@@ -4,8 +4,8 @@ import html
 import json
 
 
-AUDIO = Path("AIAgentsFundamentals2.mp3")
-TRANSCRIPCION = Path("AIAgentsFundamentals_transcripcion"
+AUDIO = Path("AIAgentsFundamentals3.mp3")
+TRANSCRIPCION = Path("AIAgentsFundamentals_transcripcion3"
 ".txt")
 SALIDA = Path("index.html")
 
